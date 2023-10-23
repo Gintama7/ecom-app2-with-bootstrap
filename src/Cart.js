@@ -1,5 +1,6 @@
-import React from 'react'
-import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
+import React, { useContext } from 'react'
+import { Badge, Button, Col, Container, Figure, Modal, Row } from 'react-bootstrap';
+import CartContext from './store/cart-context';
 
 const cartElements = [
 
@@ -42,6 +43,8 @@ const cartElements = [
     ]
 
 const Cart = (props) => {
+  const crtCtx = useContext(CartContext);
+
   return (
     <Modal
     show={props.show}
@@ -57,34 +60,38 @@ const Cart = (props) => {
     </Modal.Header>
     <Modal.Body>
      <Container>
-        <Row>
-           <Col>
+        <Row className='mb-2'>
+           <Col lg={4} sm={4} style={{textAlign:'center'}}>ITEM
            </Col>
-           <Col>
+           <Col lg={4}  sm={4} style={{textAlign:'center'}}>PRICE
            </Col>
-           <Col>
+           <Col lg={4}  sm={4} style={{textAlign:'center'}}>QUANTITY
            </Col>
         </Row>
-        { cartElements.map((item)=>(
-            <Row>            
-            <Col>
-            <img src={item.imageUrl} alt="" />
-            {item.name}
+        { crtCtx.items.map((item)=>(
+            <Row className='mb-2' style={{borderBottom:'1px solid gray'}}>            
+            <Col lg={4}  sm={4} >
+            <img src={item.imgUrl} alt="" style={{width:'100px'}}/>
+            <h3>  {item.name}</h3> 
             </Col>
-            <Col>
-            {item.price}
+            <Col lg={4}  sm={4} style={{textAlign:'center'}}>
+      <h3>  {item.price}</h3>     
             </Col>
-            <Col>
-            {
+            <Col lg={4}  sm={4} style={{textAlign:'center'}}>
+            <Badge bg='secondary' style={{height:'25px',width:'30px',marginRight:'5px'}}>{
                 item.quantity
-            }
-            <Button variant='danger'>Remove</Button>
+            }</Badge>
+            <Button variant='danger' onClick={()=>crtCtx.removeItem(item.id)}>Remove</Button>
             </Col>
          </Row>
         )) }
      </Container>
     </Modal.Body>
     <Modal.Footer>
+      <Container>      
+        <h2>Total Amount: ${crtCtx.totalAmount}</h2> 
+      </Container>
+      
       <Button onClick={props.hide}>Purchase</Button>
     </Modal.Footer>
   </Modal>

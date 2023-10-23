@@ -4,6 +4,7 @@ import './App.css';
 import Cart from './Cart';
 import Products from './Products';
 import SiteNavbar from './SiteNavbar';
+import CartProvider from './store/CartProvider';
 
 function App() {
 
@@ -18,11 +19,11 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <CartProvider>
        <SiteNavbar show={showHandler} />
       <Products/>
       <Cart show={showCart} hide={hideHandler}/>
-    </div>
+    </CartProvider>
   );
 }
 

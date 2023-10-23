@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import CartContext from './store/cart-context';
 
 const productsArr = [
 
@@ -47,8 +48,15 @@ const productsArr = [
     
     
 
-const Products = () => {
-    const [products,setProducts] = useState(productsArr);
+const Products = (props) => {
+    const products =productsArr;
+
+    const crtCtx = useContext(CartContext);
+
+  const addItemHandler =(prod)=>{
+      const obj= {id:prod.title,name:prod.title,price:Number(prod.price),imgUrl:prod.imageUrl};
+      crtCtx.addItem({...obj,quantity:1});
+  }
   return (
     <Container className='mt-3'>
     <Row>
@@ -59,7 +67,7 @@ const Products = () => {
         <Card.Body>
             <Card.Title>{prod.title}</Card.Title>           
             <Card.Text>$ {prod.price}</Card.Text>
-            <Button>Add to Cart</Button>
+            <Button onClick={()=>addItemHandler(prod)}>Add to Cart</Button>
         </Card.Body>
          </Card>  
          </Col>
