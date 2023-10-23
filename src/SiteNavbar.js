@@ -1,7 +1,8 @@
 import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 
-const SiteNavbar = () => {
+const SiteNavbar = (props) => {
+    
   return (
     <Navbar bg='dark' data-bs-theme="dark">
       <Container>
@@ -10,6 +11,9 @@ const SiteNavbar = () => {
             <Nav.Link href="#features" >Store</Nav.Link>
             <Nav.Link href="#pricing" >About</Nav.Link>
           </Nav>
+      </Container>
+      <Container>
+        <Button onClick={props.show} variant='success'>Cart</Button>
       </Container>
     </Navbar>
   )
