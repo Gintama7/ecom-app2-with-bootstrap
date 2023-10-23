@@ -1,11 +1,12 @@
 
 import './App.css';
 import Products from './Products';
+import SiteNavbar from './SiteNavbar';
 
 function App() {
   return (
     <div className="App">
-      ecom site
+       <SiteNavbar/>
       <Products/>
     </div>
   );

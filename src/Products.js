@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 
 const productsArr = [
 
@@ -50,19 +50,23 @@ const productsArr = [
 const Products = () => {
     const [products,setProducts] = useState(productsArr);
   return (
-    <div>
-        
+    <Container className='mt-3'>
+    <Row>
       {products.map((prod)=>(
-        <div> 
-            <h2>{prod.title}</h2> 
-            <h3> {prod.price}</h3>
-            <img src={prod.imageUrl} alt="" />
+        <Col lg={4} className='mb-3'>
+        <Card style={{width:'18rem'}}>
+        <Card.Img src={prod.imageUrl}/>
+        <Card.Body>
+            <Card.Title>{prod.title}</Card.Title>           
+            <Card.Text>$ {prod.price}</Card.Text>
             <Button>Add to Cart</Button>
-            </div>
-           
+        </Card.Body>
+         </Card>  
+         </Col>
       ))}
       
-    </div>
+      </Row>
+    </Container>
   )
 }
 
