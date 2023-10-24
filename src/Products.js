@@ -1,52 +1,41 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import CartContext from './store/cart-context';
 
 const productsArr = [
+  {
+    title: "Colors",
 
-    {
-    
-    title: 'Colors',
-    
     price: 100,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    
-    },
-    
-    {
-    
-    title: 'Black and white Colors',
-    
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+  },
+
+  {
+    title: "Black and white Colors",
+
     price: 50,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-    
-    },
-    
-    {
-    
-    title: 'Yellow and Black Colors',
-    
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+  },
+
+  {
+    title: "Yellow and Black Colors",
+
     price: 70,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-    
-    },
-    
-    {
-    
-    title: 'Blue Color',
-    
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+  },
+
+  {
+    title: "Blue Color",
+
     price: 100,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
-    
-    }
-    
-    ]
-    
-    
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+  },
+];
+       
 
 const Products = (props) => {
     const products =productsArr;
@@ -58,10 +47,10 @@ const Products = (props) => {
       crtCtx.addItem({...obj,quantity:1});
   }
   return (
-    <Container className='mt-3'>
-    <Row>
+    <Container className='d-flex justify-content-center align-items-center mt-3'>
+    <Row >
       {products.map((prod)=>(
-        <Col lg={4} className='mb-3'>
+        <Col md={6} lg={3} className='mb-3'>
         <Card style={{width:'18rem'}}>
         <Card.Img src={prod.imageUrl}/>
         <Card.Body>

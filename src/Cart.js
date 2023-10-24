@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Badge, Button, Col, Container, Figure, Modal, Row } from 'react-bootstrap';
+import { Badge, Button, Col, Container,  Modal, Row } from 'react-bootstrap';
 import CartContext from './store/cart-context';
 
 const cartElements = [
@@ -69,13 +69,13 @@ const Cart = (props) => {
            </Col>
         </Row>
         { crtCtx.items.map((item)=>(
-            <Row className='mb-2' style={{borderBottom:'1px solid gray'}}>            
-            <Col lg={4}  sm={4} >
+            <Row className='mb-2' style={{borderBottom:'1px solid gray',alignItems:'center'}}>            
+            <Col lg={4}  sm={4} className='d-flex align-items-center' >
             <img src={item.imgUrl} alt="" style={{width:'100px'}}/>
-            <h3>  {item.name}</h3> 
+            <p style={{marginLeft:'5px'}}> {item.name}</p> 
             </Col>
             <Col lg={4}  sm={4} style={{textAlign:'center'}}>
-      <h3>  {item.price}</h3>     
+            <h3>  {item.price}</h3>     
             </Col>
             <Col lg={4}  sm={4} style={{textAlign:'center'}}>
             <Badge bg='secondary' style={{height:'25px',width:'30px',marginRight:'5px'}}>{

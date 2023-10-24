@@ -15,15 +15,14 @@ const SiteNavbar = (props) => {
     <Navbar bg='dark' data-bs-theme="dark">
       <Container>
         <Navbar.Brand style={{color:'white'}} href='#'>Home</Navbar.Brand>
-        <Nav className="me-auto" style={{color:'white'}}>
+        <Nav className="me-auto" >
             <Nav.Link href="#features" >Store</Nav.Link>
             <Nav.Link href="#pricing" >About</Nav.Link>
           </Nav>
-      </Container>
-      <Container>
-        <Button onClick={props.show} variant='success'>Cart <Badge>{quantity}</Badge></Button>
-      </Container>
-    </Navbar>
+          <Nav> <Button onClick={props.show} variant='success' style={{marginRight:'5px'}}>Cart <Badge>{quantity}</Badge></Button></Nav>
+      </Container>      
+       
+      </Navbar>
   )
 }
 
