@@ -17,7 +17,7 @@ const SiteNavbar = (props) => {
         <Navbar.Brand style={{color:'white'}} href='#'>Home</Navbar.Brand>
         <Nav className="me-auto" >
             <Nav.Link href="#features" >Store</Nav.Link>
-            <Nav.Link href="#pricing" >About</Nav.Link>
+            <Nav.Link href="/about" >About</Nav.Link>
           </Nav>
           <Nav> <Button onClick={props.show} variant='success' style={{marginRight:'5px'}}>Cart <Badge>{quantity}</Badge></Button></Nav>
       </Container>      
