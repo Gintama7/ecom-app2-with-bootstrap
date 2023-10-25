@@ -7,10 +7,20 @@ import './App.css';
 // import CartProvider from './store/CartProvider';
 import About from './About';
 import Home from './Home';
+import Root from './Root';
+import Products from './Products';
 
 const router = createBrowserRouter([
-  { path:'/',element:<Home/> },
-  {path:'/about',element:<About/>}
+  {
+    path:'/',
+    element:<Root/>,
+    children:[
+      { path:'/',element:<Home/> },
+      {path:'/about',element:<About/>},
+      {path:'/store',element:<Products/>}
+    ]
+  }
+  
 ])
 
 function App() {

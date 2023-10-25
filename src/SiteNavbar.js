@@ -14,9 +14,9 @@ const SiteNavbar = (props) => {
   return (
     <Navbar bg='dark' data-bs-theme="dark">
       <Container>
-        <Navbar.Brand style={{color:'white'}} href='#'>Home</Navbar.Brand>
+        <Navbar.Brand href='/'>Home</Navbar.Brand>
         <Nav className="me-auto" >
-            <Nav.Link href="#features" >Store</Nav.Link>
+            <Nav.Link href="/store" >Store</Nav.Link>
             <Nav.Link href="/about" >About</Nav.Link>
           </Nav>
           <Nav> <Button onClick={props.show} variant='success' style={{marginRight:'5px'}}>Cart <Badge>{quantity}</Badge></Button></Nav>
