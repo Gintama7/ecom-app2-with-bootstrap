@@ -10,6 +10,7 @@ import Home from './Home';
 import Root from './Root';
 import Products from './Products';
 import Contact from './Contact';
+import ProductDetails from './ProductDetails';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
       { path:'/',element:<Home/> },
       {path:'/about',element:<About/>},
       {path:'/store',element:<Products/>},
-      {path:'/contact',element:<Contact/>}
+      {path:'/contact',element:<Contact/>},
+      {path:'/store/:id',element:<ProductDetails/>}
     ]
   }
   
