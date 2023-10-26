@@ -9,6 +9,7 @@ import About from './About';
 import Home from './Home';
 import Root from './Root';
 import Products from './Products';
+import Contact from './Contact';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,8 @@ const router = createBrowserRouter([
     children:[
       { path:'/',element:<Home/> },
       {path:'/about',element:<About/>},
-      {path:'/store',element:<Products/>}
+      {path:'/store',element:<Products/>},
+      {path:'/contact',element:<Contact/>}
     ]
   }
   

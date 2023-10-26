@@ -18,6 +18,7 @@ const SiteNavbar = (props) => {
         <Nav className="me-auto" >
             <Nav.Link href="/store" >Store</Nav.Link>
             <Nav.Link href="/about" >About</Nav.Link>
+            <Nav.Link href="/contact" >Contact Us</Nav.Link>
           </Nav>
           <Nav> <Button onClick={props.show} variant='success' style={{marginRight:'5px'}}>Cart <Badge>{quantity}</Badge></Button></Nav>
       </Container>      
