@@ -1,6 +1,6 @@
-import React, { useContext, useRef } from 'react'
-import { Button, Container, Form } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import React, { useContext, useRef, useState } from 'react'
+import { Button, Container, Form, FormControl } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom';
 import AuthContext from './store/auth-context';
 
 const Login = () => {
@@ -12,6 +12,7 @@ const Login = () => {
 
     const submitHandler=(e)=>{
         e.preventDefault();
+        console.log('logged in');
         const enteredEmail = emailRef.current.value;
         const enteredPassword = passwordRef.current.value;
 
@@ -27,6 +28,7 @@ const Login = () => {
       }).then((res) =>{
         if(res.ok){
             return res.json().then((data)=>{
+              console.log()
               authCtx.login(data.idToken);
               history.replace('/store');
             })
@@ -46,12 +48,12 @@ const Login = () => {
         <Form onSubmit={submitHandler}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" ref={emailRef}/>
+        <FormControl type="email" placeholder="Enter email" ref={emailRef}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password"  ref={passwordRef}/>
+        <FormControl type="password" placeholder="Password"  ref={passwordRef}/>
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit
