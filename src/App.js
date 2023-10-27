@@ -21,14 +21,14 @@ function App() {
         <Route path='/about'>
           <About/>
           </Route>
-          <Route path='/store'>
+          <Route path='/store' exact>
           <Products/>
+          </Route>         
+          <Route path='/store/:id'>
+          <ProductDetails/>
           </Route>
           <Route path='/contact'>
           <Contact/>
-          </Route>
-          <Route path='/store/:id'>
-          <ProductDetails/>
           </Route>
       </Switch>
     </Layout>  

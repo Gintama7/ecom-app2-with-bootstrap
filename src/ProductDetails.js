@@ -1,10 +1,10 @@
 import React from 'react'
-import { useParams } from 'react-router'
+import { useParams } from 'react-router-dom'
 import ProductItem from './ProductItem';
 
 const ProductDetails = () => {
     const params = useParams();
-
+ console.log(params.id);
   return (
     <div>
       {params.id==='p1' && <ProductItem id={params.id}/>}

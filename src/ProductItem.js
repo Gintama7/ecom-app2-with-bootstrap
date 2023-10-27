@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { productsArr } from './Products';
-import { Carousel, Col, Container, Image, Row } from 'react-bootstrap';
+import { Carousel, Col, Container, Row } from 'react-bootstrap';
 
 const ProductItem = (props) => {
 // const [item,setItem] = useState('');
