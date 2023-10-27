@@ -7,6 +7,7 @@ import Contact from './Contact';
 import { Route,Switch} from 'react-router-dom';
 import Layout from './Layout';
 import ProductDetails from './ProductDetails';
+import Login from './Login';
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path='/contact'>
           <Contact/>
+          </Route>
+          <Route path='/login'>
+          <Login/>
           </Route>
       </Switch>
     </Layout>  
