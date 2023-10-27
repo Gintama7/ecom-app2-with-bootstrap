@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { productsArr } from './Products';
-import { Carousel, Container, Image } from 'react-bootstrap';
+import { Carousel, Col, Container, Image, Row } from 'react-bootstrap';
 
 const ProductItem = (props) => {
 // const [item,setItem] = useState('');
@@ -15,33 +15,29 @@ let item=[];
  console.log(item);
 
   return (
-    <Container className='mt-3 align-items-center justify-content-end'>
+    <Container className='mt-3 d-flex align-items-center justify-content-start'>
+        <Row>
+          <Col lg={6}>   
+          <Carousel>
+      <Carousel.Item>
+        <img alt="First slide" src={item.imageUrl} style={{width:'300px',height:'200px'}}/>
+        <Carousel.Caption>
+          <h3>{item.title}</h3>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img alt="Second slide" src='https://www.pixelstalk.net/wp-content/uploads/2016/06/Wallpaper-HD-color-images.jpg' style={{width:'300px',height:'200px'}} />
         
-      <Carousel style={{width:'200px', height:'200px'}}>
-      <Carousel.Item>
-        <Image text="First slide" src={item.imageUrl} />
-        <Carousel.Caption>
-          <h3>{item.title}</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <Image text="Second slide" src='https://www.pixelstalk.net/wp-content/uploads/2016/06/Wallpaper-HD-color-images.jpg' fluid />
-        <Carousel.Caption>
-          <h3>{item.title}</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
+        <img alt="Third slide" src='https://www.pixelstalk.net/wp-content/uploads/2016/06/Color-Wallpapers-images-free-download.jpg' style={{width:'300px',height:'200px'}}/>
       </Carousel.Item>
-      <Carousel.Item>
-        <Image text="Third slide" src='https://www.pixelstalk.net/wp-content/uploads/2016/06/Color-Wallpapers-images-free-download.jpg' fluid/>
-        <Carousel.Caption>
-          <h3>{item.title}</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+    </Carousel></Col>
+          <Col lg={6}>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident consectetur cumque voluptas nesciunt libero architecto eos? Saepe provident nemo animi, cumque eveniet unde labore vel mollitia minima optio, possimus et.
+          </Col>
+        </Row>
+    
     </Container>
   )
 }
