@@ -1,50 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Badge, Button, Col, Container,  Modal, Row } from 'react-bootstrap';
 import CartContext from './store/cart-context';
+import axios from 'axios';
 
-const cartElements = [
 
-    {
-    
-    title: 'Colors',
-    
-    price: 100,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    
-    quantity: 2,
-    
-    },
-    
-    {
-    
-    title: 'Black and white Colors',
-    
-    price: 50,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-    
-    quantity: 3,
-    
-    },
-    
-    {
-    
-    title: 'Yellow and Black Colors',
-    
-    price: 70,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-    
-    quantity: 1,
-    
-    }
-    
-    ]
 
 const Cart = (props) => {
   const crtCtx = useContext(CartContext);
+  let amount =0;
+  crtCtx.items.forEach((item)=>{
+      
+     amount += Number(item.price);
 
+  })
   return (
     <Modal
     show={props.show}
@@ -68,20 +36,20 @@ const Cart = (props) => {
            <Col lg={4}  sm={4} style={{textAlign:'center'}}>QUANTITY
            </Col>
         </Row>
-        { crtCtx.items.map((item)=>(
+        { crtCtx.items.map((product)=>(
             <Row className='mb-2' style={{borderBottom:'1px solid gray',alignItems:'center'}}>            
             <Col lg={4}  sm={4} className='d-flex align-items-center' >
-            <img src={item.imgUrl} alt="" style={{width:'100px'}}/>
-            <p style={{marginLeft:'5px'}}> {item.name}</p> 
+            <img src={product.imgUrl} alt="" style={{width:'100px'}}/>
+            <p style={{marginLeft:'5px'}}> {product.name}</p> 
             </Col>
             <Col lg={4}  sm={4} style={{textAlign:'center'}}>
-            <h3>  {item.price}</h3>     
+            <h3>  {product.price}</h3>     
             </Col>
             <Col lg={4}  sm={4} style={{textAlign:'center'}}>
             <Badge bg='secondary' style={{height:'25px',width:'30px',marginRight:'5px'}}>{
-                item.quantity
+                product.quantity
             }</Badge>
-            <Button variant='danger' onClick={()=>crtCtx.removeItem(item.id)}>Remove</Button>
+            <Button variant='danger' onClick={()=>crtCtx.removeItem(product.id)}>Remove</Button>
             </Col>
          </Row>
         )) }
@@ -89,7 +57,7 @@ const Cart = (props) => {
     </Modal.Body>
     <Modal.Footer>
       <Container>      
-        <h2>Total Amount: ${crtCtx.totalAmount}</h2> 
+        <h2>Total Amount: ${amount}</h2> 
       </Container>
       
       <Button onClick={props.hide}>Purchase</Button>

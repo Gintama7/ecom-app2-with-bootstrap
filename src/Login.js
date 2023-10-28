@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useRef} from 'react'
 import { Button, Container, Form, FormControl } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom';
 import AuthContext from './store/auth-context';
@@ -29,7 +29,7 @@ const Login = () => {
         if(res.ok){
             return res.json().then((data)=>{
               console.log()
-              authCtx.login(data.idToken);
+              authCtx.login(data.idToken,data.email);
               history.replace('/store');
             })
             
