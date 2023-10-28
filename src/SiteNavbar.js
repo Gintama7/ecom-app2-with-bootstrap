@@ -25,11 +25,11 @@ const SiteNavbar = (props) => {
             <Nav.Link href="/store" >Store</Nav.Link>
             <Nav.Link href="/about" >About</Nav.Link>
             <Nav.Link href="/contact" >Contact Us</Nav.Link>
-            <Nav.Link href="/login" >Login</Nav.Link>
+            {!authCtx.isLoggedIn && <Nav.Link href="/login" >Login</Nav.Link>}
           </Nav>
           
          {authCtx.isLoggedIn &&<Nav><Button onClick={logOutHandler} style={{marginRight:'5px'}} >Log Out</Button></Nav> } 
-         <Nav> <Button onClick={props.show} variant='success' style={{marginRight:'5px'}}>Cart <Badge>{quantity}</Badge></Button></Nav>
+        {authCtx.isLoggedIn && <Nav> <Button onClick={props.show} variant='success' style={{marginRight:'5px'}}>Cart <Badge>{quantity}</Badge></Button></Nav>}
       </Container>      
        
       </Navbar>
