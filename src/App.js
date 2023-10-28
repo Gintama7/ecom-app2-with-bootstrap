@@ -21,13 +21,14 @@ function App() {
  const crtCtx = useContext(CartContext);
  
  useEffect(()=>{
-  const newMail = localStorage.getItem('email');
+  if(authCtx.isLoggedIn)
+  {const newMail = localStorage.getItem('email');
   console.log(newMail);
-  axios.get(`https://crudcrud.com/api/d35b0f67d9104ca492a02b152ed8d701/cart${newMail}`)
+  axios.get(`https://crudcrud.com/api/2d20dce9d27a4beca1b432e8508d5830/cart${newMail}`)
   .then((res)=>{
     crtCtx.incrementItem(res.data);
     console.log(res.data);
-  })
+  })}
 },[authCtx.isLoggedIn])
     
   return (

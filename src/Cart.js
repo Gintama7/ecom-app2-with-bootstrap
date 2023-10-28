@@ -42,7 +42,7 @@ let amount =0;
            <Col lg={4}  sm={4} style={{textAlign:'center'}}>QUANTITY
            </Col>
         </Row>
-        { crtCtx.items.map((product)=>(
+        { (crtCtx.items.map((product)=>(
             <Row className='mb-2' style={{borderBottom:'1px solid gray',alignItems:'center'}}>            
             <Col lg={4}  sm={4} className='d-flex align-items-center' >
             <img src={product.imgUrl} alt="" style={{width:'100px'}}/>
@@ -58,7 +58,7 @@ let amount =0;
             <Button variant='danger' onClick={()=>crtCtx.removeItem(product.id)}>Remove</Button>
             </Col>
          </Row>
-        )) }
+        ))) }
      </Container>
     </Modal.Body>
     <Modal.Footer>

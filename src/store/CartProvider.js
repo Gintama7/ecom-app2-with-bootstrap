@@ -14,7 +14,7 @@ const CartProvider = (props) => {
     const addItemToCartHandler=(item)=>{
     const newMail =localStorage.getItem('email');
       
-          axios.post(`https://crudcrud.com/api/d35b0f67d9104ca492a02b152ed8d701/cart${newMail}`,
+          axios.post(`https://crudcrud.com/api/2d20dce9d27a4beca1b432e8508d5830/cart${newMail}`,
           {...item,totalQuantity}
           ).then((res)=>{
             console.log('added successfully');

@@ -14,15 +14,15 @@ import { AuthContextProvider } from './store/auth-context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AuthContextProvider>
+  
     <CartProvider>
-     
+     <AuthContextProvider>
       <BrowserRouter>
     <App />
     </BrowserRouter>
-    
-    </CartProvider>
     </AuthContextProvider>
+    </CartProvider>
+    
   
 );
 
