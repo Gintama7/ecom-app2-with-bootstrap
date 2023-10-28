@@ -14,7 +14,7 @@ const CartProvider = (props) => {
     const addItemToCartHandler=(item)=>{
     const newMail =localStorage.getItem('email');
       
-          axios.post(`https://crudcrud.com/api/2d20dce9d27a4beca1b432e8508d5830/cart${newMail}`,
+          axios.post(`https://crudcrud.com/api/32c78bb959414ef5a2ce8dbefbacbcb6/cart${newMail}`,
           {...item,totalQuantity}
           ).then((res)=>{
             console.log('added successfully');
@@ -26,21 +26,30 @@ const CartProvider = (props) => {
     }
 
     const removeItemFromCartHandler =(id)=>{
-        const existingItem = items.find((obj) => obj.id === id);
-
-        if (existingItem.quantity!==1) {
-          const updatedCart = items.map((cartItem) =>
-            cartItem.id === id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem
-          );
-          setItems(updatedCart);
-          const updatedAmount= totalAmount-existingItem.price;
-          setTotalAmount(updatedAmount);
-        } else if(existingItem.quantity===1) {
-          const filteredItems = items.filter((item)=> item.id !== id);
-          setItems(filteredItems);
-          const updatedAmount= totalAmount-(existingItem.price*existingItem.quantity);
-          setTotalAmount(updatedAmount)
-        }
+        
+        const newMail =localStorage.getItem('email');
+        
+        let ids= [];
+        axios.get(`https://crudcrud.com/api/32c78bb959414ef5a2ce8dbefbacbcb6/cart${newMail}`)
+        .then((res)=>{
+          for(let i=0;i<res.data.length;i++)
+          {
+            if(res.data[i].id === id)
+            {
+              ids.push(res.data[i]._id);
+            }
+          }
+          for(let i=0;i<ids.length;i++)
+          {
+            axios.delete(`https://crudcrud.com/api/32c78bb959414ef5a2ce8dbefbacbcb6/cart${newMail}/${ids[i]}`)
+            .then((res)=>{
+              setItems(prev=>[...prev,res.data]);
+              const filteredItems = items.filter((item)=> item.id !== id);
+            setItems(filteredItems);
+            })
+          }
+                      
+        })
     }
 
     const incrementHandler=(item)=>{

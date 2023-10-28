@@ -24,7 +24,7 @@ function App() {
   if(authCtx.isLoggedIn)
   {const newMail = localStorage.getItem('email');
   console.log(newMail);
-  axios.get(`https://crudcrud.com/api/2d20dce9d27a4beca1b432e8508d5830/cart${newMail}`)
+  axios.get(`https://crudcrud.com/api/32c78bb959414ef5a2ce8dbefbacbcb6/cart${newMail}`)
   .then((res)=>{
     crtCtx.incrementItem(res.data);
     console.log(res.data);
