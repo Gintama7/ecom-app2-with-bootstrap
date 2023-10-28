@@ -2,17 +2,23 @@ import React, { useContext, useEffect } from 'react'
 import { Badge, Button, Col, Container,  Modal, Row } from 'react-bootstrap';
 import CartContext from './store/cart-context';
 import axios from 'axios';
+import AuthContext from './store/auth-context';
 
 
 
 const Cart = (props) => {
-  const crtCtx = useContext(CartContext);
-  let amount =0;
+  const authCtx = useContext(AuthContext);
+const crtCtx = useContext(CartContext);
+
+
+let amount =0;
+   if(authCtx.isLoggedIn)
+ { 
   crtCtx.items.forEach((item)=>{
       
      amount += Number(item.price);
 
-  })
+  })}
   return (
     <Modal
     show={props.show}

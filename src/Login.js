@@ -1,5 +1,5 @@
 import React, { useContext, useRef} from 'react'
-import { Button, Container, Form, FormControl } from 'react-bootstrap'
+import { Button, Container, Form } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom';
 import AuthContext from './store/auth-context';
 
@@ -48,12 +48,12 @@ const Login = () => {
         <Form onSubmit={submitHandler}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <FormControl type="email" placeholder="Enter email" ref={emailRef}/>
+        <Form.Control type="email" placeholder="Enter email" ref={emailRef}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <FormControl type="password" placeholder="Password"  ref={passwordRef}/>
+        <Form.Control type="password" placeholder="Password"  ref={passwordRef}/>
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit

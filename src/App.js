@@ -15,21 +15,20 @@ import CartContext from './store/cart-context';
 import axios from 'axios';
 
 
+
 function App() {
-const authCtx = useContext(AuthContext);
-const cartCtx = useContext(CartContext);
-   
-useEffect(()=>{
- if(authCtx.isLoggedIn) {
+ const authCtx = useContext(AuthContext);
+ const crtCtx = useContext(CartContext);
+ 
+ useEffect(()=>{
   const newMail = localStorage.getItem('email');
   console.log(newMail);
-  axios.get(`https://crudcrud.com/api/34afb79414254181a3945ebceddda921/cart${newMail}`)
+  axios.get(`https://crudcrud.com/api/d35b0f67d9104ca492a02b152ed8d701/cart${newMail}`)
   .then((res)=>{
-    cartCtx.incrementItem(res.data);
+    crtCtx.incrementItem(res.data);
     console.log(res.data);
-  })}
+  })
 },[authCtx.isLoggedIn])
-
     
   return (
     <Layout>      

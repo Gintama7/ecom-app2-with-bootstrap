@@ -7,14 +7,18 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 const SiteNavbar = (props) => {
   const crtCtx = useContext(CartContext);
  const authCtx = useContext(AuthContext);
-  let quantity=0;
+ let quantity=0;
+ const history = useHistory();
 
-  crtCtx.items.forEach((item)=>{
-    quantity= quantity + Number(item.quantity);
-  })
-
+ if(authCtx.isLoggedIn)
+        {    crtCtx.items.forEach((item)=>{
+              quantity= quantity + Number(item.quantity);
+            })
+           }
+  
   const logOutHandler=()=>{
     authCtx.logout();
+    history.replace('/login');
   }
     
   return (
